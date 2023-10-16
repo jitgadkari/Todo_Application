@@ -18,7 +18,8 @@ function addTodo(){
    }
     todo.push(ob);
    sessionStorage.setItem("todo",JSON.stringify(todo));
-  
+  title.value="";
+  description.value="";
    show();
 }
 

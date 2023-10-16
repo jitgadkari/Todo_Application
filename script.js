@@ -27,7 +27,10 @@ const show=()=>{
 
     let content="";
     if(localTodoString ==null){
-        content +=`<h2>No Todo's to show </h2>`;
+        content +=`
+        <div class="container mx-auto bg-white md:w-1/2 p-5 rounded-md my-2">
+        <h2 class=" font-extrabold" >No Todo's to show </h2>
+        </div>`;
     }else{
         let todos=JSON.parse(localTodoString);
         for(let t of todos.reverse()){

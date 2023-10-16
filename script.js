@@ -35,14 +35,26 @@ const show=()=>{
         let todos=JSON.parse(localTodoString);
         for(let t of todos.reverse()){
             content+=`
-            <div class="container mx-auto bg-white md:w-1/2 p-5 rounded-md my-2">
+            <div class="container mx-auto bg-white md:w-1/2 p-5 rounded-md my-2 relative">
             <h1 class=" font-extrabold" id="show Title"> ${t.title}</h1>
             <p id="showDetails">${t.desc}</p>
+            <button class="font-extrabold absolute right-3 top-1 hover:text-red-500" onclick="deleteTodo(${t.id})">X</button>
             </div>
             `
         }
     }
     document.getElementById("showtodos").innerHTML=content;
+
+}
+const deleteTodo=(deleteThisId)=>{
+    let todoString=sessionStorage.getItem("todo");
+    let todos=JSON.parse(todoString);
+    
+    todos=todos.filter(todo => todo.id !==deleteThisId);
+    console.log(todos);
+    sessionStorage.setItem("todo",JSON.stringify(todos));
+    show();
+ 
 
 }
 show();
